@@ -1,0 +1,32 @@
+*{
+    overflow-x: hidden;
+}
+
+.MuiPaper-root{
+    border-radius: 1rem !important;
+    background-color: black;
+    border: none !important;
+}
+
+.MuiList-root{
+    
+    background-color: #252931;
+}
+
+.MuiLinearProgress-root{
+    background-color: #27272A !important;
+}
+
+.MuiLinearProgress-bar{
+    background: #6C2BD9 !important;
+}
+
+.input-borrow{
+    border: 1px solid #4B5563 !important;
+    color: white;
+    background: #252931 ;
+}
+
+.BorrowDetail{
+    background-image: url(./assets/Frame\ 363.png);
+}
