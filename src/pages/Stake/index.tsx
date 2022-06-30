@@ -65,7 +65,7 @@ const Index: React.FC = () => {
                 width: "5rem",
                 opacity: 0.2,
               }}
-              alt=''
+              alt=""
             />
             <TextField
               value={1}
@@ -86,7 +86,7 @@ const Index: React.FC = () => {
               }}
               className="input-borrow"
             >
-              <img src={ethfilled} alt='' />
+              <img src={ethfilled} alt="" />
               <p style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>
                 wEthereum (wETH)
               </p>
@@ -120,7 +120,7 @@ const Index: React.FC = () => {
               }}
               className="input-borrow"
             >
-              <img src={stheth} alt='' />
+              <img src={stheth} alt="" />
               <p style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>
                 stEthereum (stETH)
               </p>
@@ -227,12 +227,13 @@ const Index: React.FC = () => {
               {/* <p style={{fontSize: ".8rem", marginRight: "1rem"}} >0.00000</p> */}
               {/* </Box> */}
             </Box>
-
-            <Button
-              sx={{ width: "90%", background: "#7E3AF2", color: "white" }}
-            >
-              Collect Rewards
-            </Button>
+            <Box sx={{ widht: "100%", textAlign: "center", p: 2 }}>
+              <Button
+                sx={{ width: "90%", background: "#7E3AF2", color: "white" }}
+              >
+                Collect Rewards
+              </Button>
+            </Box>
 
             {/* </Box> */}
           </Box>
