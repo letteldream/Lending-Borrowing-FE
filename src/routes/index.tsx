@@ -7,10 +7,18 @@ const routes = [
     path: "/borrow",
     component: lazy(() => import("pages/Borrow")),
   },
-  { path: "/borrow-detail", component: lazy(() => import("pages/BorrowDetail")) },
-  { path: "/stake", component: lazy(() => import("pages/Stake")) },
+  {
+    path: "/borrow-detail/:symbol",
+    component: lazy(() => import("pages/BorrowDetail")),
+  },
+
   { path: "/farm", component: lazy(() => import("pages/Farm")) },
-  { path: "/metamask", component: lazy(() => import("pages/Metamask")) },
+  {
+    path: "/farm-detail/:symbol",
+    component: lazy(() => import("pages/FarmDetail")),
+  },
+  { path: "/stake", component: lazy(() => import("pages/Stake")) },
+  // { path: "/metamask", component: lazy(() => import("pages/Metamask")) },
 ];
 
 function ComposeRoutes() {

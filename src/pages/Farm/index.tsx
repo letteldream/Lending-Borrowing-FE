@@ -2,6 +2,7 @@ import { Box, useMediaQuery } from "@mui/material";
 import React, { lazy } from "react";
 import linearbg from "assets/linearbg.svg";
 import eth from "assets/eth.svg";
+import { PoolList } from "config/poolList";
 
 const Header = lazy(() => import("components/Header"));
 const Footer = lazy(() => import("components/Footer"));
@@ -31,9 +32,17 @@ const Index: React.FC = () => {
             py: desktop ? 0 : 2,
           }}
         >
+          {PoolList.map((item, index) => (
+            <Card
+              icon={eth}
+              headline={item.name}
+              symbol={item.symbol}
+              key={index}
+            />
+          ))}
+          {/* <Card icon={eth} headline="some text" />
           <Card icon={eth} headline="some text" />
-          <Card icon={eth} headline="some text" />
-          <Card icon={eth} headline="some text" />
+          <Card icon={eth} headline="some text" /> */}
           <Box sx={{ display: desktop ? "none" : "block", marginTop: "4rem" }}>
             <Footer />
           </Box>

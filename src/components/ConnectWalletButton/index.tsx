@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import close from "assets/close.svg";
 
 import metamask from "assets/metamask.svg";
+import { shortenAddress } from "utils";
 
 const INFURA_ID = "e67a2556dede4ff2b521a375a1905f8b";
 
@@ -111,7 +112,7 @@ const web3Modal = new Web3Modal({
 });
 
 export default function ConnectWalletButton() {
-  const { chainId, instance, dispatch: web3Dispatch } = useWeb3();
+  const { account, chainId, instance, dispatch: web3Dispatch } = useWeb3();
 
   const toggleWalletModal = useWalletModalToggle();
   const isWalletModalOpen = useModalOpen(ApplicationModal.WALLET);
@@ -234,7 +235,7 @@ export default function ConnectWalletButton() {
   }, [instance, web3Dispatch]);
 
   const [anchorE2, setAnchorE2] = React.useState<null | HTMLElement>(null);
-  const open2 = Boolean(anchorE2);
+  const open2 = anchorE2 === null ? false : true;
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorE2(event.currentTarget);
   };
@@ -242,10 +243,10 @@ export default function ConnectWalletButton() {
     setAnchorE2(null);
   };
 
-  return instance ? (
+  return account && instance ? (
     <>
       <Box
-        onClick={handleClick2}
+        onClick={(e) => handleClick2(e)}
         sx={{
           overflowY: "hidden",
           borderRadius: ".3rem",
@@ -257,10 +258,12 @@ export default function ConnectWalletButton() {
         }}
       >
         <img src={metamask} alt="" />
-        <p style={{ marginLeft: ".5rem", color: "#9CA3AF" }}>0x84a...F9CV4</p>
+        <p style={{ marginLeft: ".5rem", color: "#9CA3AF" }}>
+          {shortenAddress(account)}
+        </p>
         <KeyboardArrowDownIcon htmlColor="#9CA3AF" />
       </Box>
-      <Menu anchorEl={anchorE2} open={open2} onClose={handleClose2}>
+      <Menu anchorEl={anchorE2} open={open2} onClose={() => handleClose2()}>
         <MenuItem style={{ background: "#252931" }} onClick={disconnect}>
           <img style={{ marginRight: ".5rem" }} src={close} alt="" />
           Disconnect Wallet

@@ -7,15 +7,17 @@ import App from "./App";
 import theme from "config/theme";
 import { store } from "store";
 import { Web3Provider } from "state/web3";
+import Updaters from "state/Updaters";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Web3Provider>
+  <Web3Provider>
+    <Provider store={store}>
+      <Updaters />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <App />
       </ThemeProvider>
-    </Web3Provider>
-  </Provider>,
+    </Provider>
+  </Web3Provider>,
   document.querySelector("#root")
 );

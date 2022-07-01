@@ -6,6 +6,10 @@ import { useSelector } from "react-redux";
 import { useAppSelector } from "state/hooks";
 import { AppState } from "store";
 
+export function useIsLoading(): boolean {
+  return useSelector((state: AppState) => state.application.loading);
+}
+
 export function useBlockNumber(chainId?: number): number | undefined {
   return useSelector(
     (state: AppState) => state.application.blockNumber[chainId ?? -1]

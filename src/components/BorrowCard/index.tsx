@@ -12,6 +12,8 @@ import {
 import { LENDING_MARKET_ADDRESS, WETH_ADDRESS } from "config/address";
 import { BigNumber, ethers } from "ethers";
 import { useWeb3 } from "state/web3";
+import { ICollateralSettings } from "interface/ICollateralSettings";
+import { IMarketSettings } from "./IMarketSettings";
 
 interface Props {
   icon: string;
@@ -19,27 +21,7 @@ interface Props {
   symbol: string;
 }
 
-interface ICollateralSettings {
-  isValid: boolean;
-  creditLimitRate: any;
-  liqLimitRate: number;
-  decimals: number;
-  totalBorrowCap: BigNumber;
-}
-
-interface IMarketRate {
-  numerator: number;
-  denominator: number;
-}
-
-/// @notice A struct for lending market settings
-interface IMarketSettings {
-  interestApr: IMarketRate; // debt interest rate in APR
-  orgFeeRate: IMarketRate; // fees that will be charged upon minting AirUSD (0.3% in AirUSD)
-  liquidationPenalty: IMarketRate; // liquidation penalty fees (5%)
-}
-
-const Index: React.FC<Props> = ({ icon, headline }) => {
+const Index: React.FC<Props> = ({ icon, headline, symbol }) => {
   // Get Contracts
   const { chainId } = useWeb3();
   const tokenContract = useWETHContract();
@@ -102,18 +84,6 @@ const Index: React.FC<Props> = ({ icon, headline }) => {
       getInfo();
     }
   }, [chainId, tokenContract, priceOracleContract, lendingMarketContract]);
-
-  // amount = tokenContract.balanceOf(lendingMarket.address);
-  // tvl = amount * priceOracleAggregatorContract.viewPriceInUSD(tokenContract.address) / ((10 ^ tokenContract.decimals) * (10 ^ 8))
-  // Image
-  // - AirUSD borrow limit
-  // colleteralSettings = lendingMarketContract.collateralSettings(tokenContract.address)
-  // borrowLimit = collateralSettings.creditLimit.0 / collateralSettings.creditLimit.1 * 100%
-  // - AirUSD left
-  // totalBorrowsPerCollateral = lendingMarketContract.totalBorrowsPerCollateral(tokenContract.address)
-  // left = formatEther(collateralSettings.totalBorrowCap - totalBorrowsPerCollateral)
-  // - Interest & Liquidiation Fee
-  // settings = lendingMarket.settings()
 
   const desktop = useMediaQuery("(min-width: 1024px)");
   return (

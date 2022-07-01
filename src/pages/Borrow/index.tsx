@@ -2,25 +2,11 @@ import { Box, useMediaQuery } from "@mui/material";
 import React, { lazy } from "react";
 import linearbg from "assets/linearbg.svg";
 import eth from "assets/eth.svg";
+import { PoolList } from "config/poolList";
 
 const Header = lazy(() => import("components/Header"));
 const Footer = lazy(() => import("components/Footer"));
-const Card = lazy(() => import("components/TokenCard"));
-
-const borrowTokens = [
-  {
-    name: "wEthereum(wETH)",
-    symbol: "wETH",
-  },
-  {
-    name: "stEthereum (stETH)",
-    symbol: "stETH",
-  },
-  {
-    name: "ETH - USDT",
-    symbol: "ETHUSDT",
-  },
-];
+const Card = lazy(() => import("components/BorrowCard"));
 
 const Index: React.FC = () => {
   const desktop = useMediaQuery("(min-width: 1024px)");
@@ -48,7 +34,7 @@ const Index: React.FC = () => {
             py: desktop ? 0 : 2,
           }}
         >
-          {borrowTokens.map((item, index) => (
+          {PoolList.map((item, index) => (
             <Card
               icon={eth}
               headline={item.name}

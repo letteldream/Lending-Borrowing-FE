@@ -2,14 +2,16 @@ import { Box, Button, useMediaQuery } from "@mui/material";
 import React from "react";
 import cardicon from "assets/cardicon.svg";
 import LinearProgress from "@mui/material/LinearProgress";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Props {
   icon: string;
   headline: string;
+  symbol: string;
 }
 
-const Index: React.FC<Props> = ({ icon, headline }) => {
+const Index: React.FC<Props> = ({ icon, headline, symbol }) => {
+  const navigate = useNavigate();
   const desktop = useMediaQuery("(min-width: 1024px)");
   return (
     <Box
@@ -76,6 +78,7 @@ const Index: React.FC<Props> = ({ icon, headline }) => {
             width: "45%",
             borderRadius: ".5rem",
           }}
+          onClick={() => navigate(`/farm-detail/${symbol}`)}
         >
           Deposit
         </Button>

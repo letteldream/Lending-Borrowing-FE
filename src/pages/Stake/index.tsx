@@ -1,7 +1,6 @@
 import { Box, Button, TextField, useMediaQuery } from "@mui/material";
 import React, { lazy } from "react";
 import linearbg from "assets/linearbg.svg";
-import eth from "assets/eth.svg";
 import cardicon from "assets/cardicon.svg";
 import ethfilled from "assets/ethfilled.svg";
 import stheth from "assets/stheth.svg";
@@ -11,7 +10,6 @@ import InfoIcon from "@mui/icons-material/Info";
 
 const Header = lazy(() => import("components/Header"));
 const Footer = lazy(() => import("components/Footer"));
-const Card = lazy(() => import("components/TokenCard"));
 
 const Index: React.FC = () => {
   const desktop = useMediaQuery("(min-width: 1024px)");
@@ -234,100 +232,11 @@ const Index: React.FC = () => {
                 Collect Rewards
               </Button>
             </Box>
-
-            {/* </Box> */}
           </Box>
           <Box sx={{ display: desktop ? "none" : "block", marginTop: "4rem" }}>
             <Footer />
           </Box>
         </Box>
-        {/* <Box
-          sx={{
-            display: desktop ? "block" : "none",
-            width: "100%",
-            marginTop: "3rem",
-            zIndex: 22,
-            px: 4,
-            py: 2,
-            borderRadius: "1rem",
-            minHeight: "20rem",
-            background: "#252931",
-            position: "relative",
-            bottom: 10,
-          }}
-        >
-          
-          <h3>Balance</h3>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>
-              Lore ipsum lorem ipsum
-            </p>
-            <InfoIcon />
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-            }}
-          >
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>
-              lorem ipsum
-            </p>
-            <Box>
-              <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>0.00000</p>
-              <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>0.00000</p>
-            </Box>
-          </Box>
-          <Box sx={{ width: "100%", background: "grey", fontSize: ".1rem" }}>
-            a
-          </Box>
-          <h3>Staked</h3>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>
-              Lore ipsum lorem ipsum
-            </p>
-            <InfoIcon />
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-            }}
-          >
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>
-              lorem ipsum
-            </p>
-            <Box>
-              <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>0.00000</p>
-              <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>0.00000</p>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>
-              Approximate staking APR
-            </p>
-            
-            <p style={{ fontSize: ".8rem", marginRight: "1rem" }}>0.00000</p>
-            
-          </Box>
-
-          <Button sx={{ width: "100%", background: "#7E3AF2", color: "white" }}>
-            Collect Rewards
-          </Button>
-
-          
-        </Box> */}
       </Box>
       <Box
         sx={{
